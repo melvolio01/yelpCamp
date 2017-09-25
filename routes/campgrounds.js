@@ -10,7 +10,7 @@ router.get('/', function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render("./campground/index", {campgrounds: allCampgrounds, currentUser: req.user});
+            res.render("campground/index", {campgrounds: allCampgrounds, page: 'campgrounds', currentUser: req.user});
         }
     });
 });
