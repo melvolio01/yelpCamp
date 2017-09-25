@@ -8,6 +8,7 @@
                 <li class="list-group-item">Info 2</li>
                 <li class="list-group-item">Info 3</li>
             </div>
+                <div id="map"></div>
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
@@ -54,6 +55,47 @@
             </div>
         </div>
     </div>
+
+<script>
+  function initMap() {
+    var lat = <%= campground.lat %>;
+    var lng = <%= campground.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false,
+        styles: [{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#eef5de"}]},{"featureType":"administrative.country","elementType":"geometry.fill","stylers":[{"color":"#eef5de"},{"visibility":"on"}]},{"featureType":"administrative.locality","elementType":"geometry.fill","stylers":[{"color":"#eef5de"}]},{"featureType":"administrative.neighborhood","elementType":"geometry.fill","stylers":[{"color":"#eef5de"}]},{"featureType":"administrative.land_parcel","elementType":"geometry.fill","stylers":[{"color":"#eef5de"}]},{"featureType":"landscape","elementType":"labels.icon","stylers":[{"visibility":"on"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#eef5de"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#eef5de"}]},{"featureType":"landscape.natural.landcover","elementType":"geometry.fill","stylers":[{"color":"#eef5de"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry.fill","stylers":[{"visibility":"off"},{"color":"#7ace9a"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#6fcfbd"}]}]
+    });
+    var contentString = `
+      <strong><%= campground.name %><br />
+      <%= campground.location %></strong>
+      <p><%= campground.description %></p>
+    `
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEnnovSWFG3W86iqkamNqAIJMflK_L29o&callback=initMap"></script>
+Display the campground location in show.ejs
+Create a div with an id of map directly beneath where you have the Info 1, 2 and 3 .list-group inside of .col-md-3:
+<div class="col-md-3">
+  <p class="lead">YelpCamp</p>
+  <div class="list-group">
+    <li class="list-group-item active">Info 1</li>
+    <li class="list-group-item">Info 2</li>
+    <li class="list-group-item">Info 3</li>
+  </div>
+  <div id="map"></div>
+</div>
 
 
 <% include ../partials/footer %>

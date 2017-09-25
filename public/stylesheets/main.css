@@ -46,3 +46,8 @@ hr {
 .btn-outline-secondary {
    margin-bottom: 10px;
 }
+
+#map {
+    height: 400px;
+    width: 100p%;
+}
