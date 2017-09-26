@@ -82,7 +82,6 @@ router.get('/:id/edit', middleware.checkCampgroundOwner, function (req, res){
 //Update campground
 router.put("/:id", middleware.checkCampgroundOwner, function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
-    // if ()
     var lat = data.results[0].geometry.location.lat;
     var lng = data.results[0].geometry.location.lng;
     var location = data.results[0].formatted_address;

@@ -13,13 +13,14 @@ var moment          = require('moment');
 var Campground  =   require("./models/campground");
 var Comment     =   require("./models/comment");
 var User        =   require('./models/user');
-
 //Requiring routes
 var commentRoutes   = require('./routes/comments');
 var campgroundRoutes = require('./routes/campgrounds');
 var indexRoutes = require('./routes/index');
 
-mongoose.connect("mongodb://localhost/yelp_camp");
+// mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://melv:yelper@ds151554.mlab.com:51554/yelpcamp");
+// mongodb://melv:yelper@ds151554.mlab.com:51554/yelpcamp
 //Allows us to link straight into public sub-folder
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
