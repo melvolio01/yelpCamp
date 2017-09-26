@@ -2,13 +2,13 @@
 
     <div class="row">
         <div class="col-md-3">
-            <p class="lead">YelpCamp</p>
+            <p class="lead"><%= campground.name %></p>
             <div class="list-group">
                 <li class="list-group-item active">Info 1</li>
                 <li class="list-group-item">Info 2</li>
                 <li class="list-group-item">Info 3</li>
             </div>
-                <div id="map"></div>
+                <div id="map"><h3>Location unknown</h3></div>
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
@@ -84,16 +84,16 @@
   }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEnnovSWFG3W86iqkamNqAIJMflK_L29o&callback=initMap"></script>
-Display the campground location in show.ejs
-Create a div with an id of map directly beneath where you have the Info 1, 2 and 3 .list-group inside of .col-md-3:
-<div class="col-md-3">
-  <p class="lead">YelpCamp</p>
-  <div class="list-group">
-    <li class="list-group-item active">Info 1</li>
-    <li class="list-group-item">Info 2</li>
-    <li class="list-group-item">Info 3</li>
-  </div>
-  <div id="map"></div>
+<!--Display the campground location in show.ejs-->
+<!--Create a div with an id of map directly beneath where you have the Info 1, 2 and 3 .list-group inside of .col-md-3:-->
+<!--<div class="col-md-3">-->
+<!--  <p class="lead">YelpCamp</p>-->
+<!--  <div class="list-group">-->
+<!--    <li class="list-group-item active">Info 1</li>-->
+<!--    <li class="list-group-item">Info 2</li>-->
+<!--    <li class="list-group-item">Info 3</li>-->
+<!--  </div>-->
+  <!--<div id="map"></div>-->
 </div>
 
 

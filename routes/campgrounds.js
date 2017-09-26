@@ -81,7 +81,7 @@ router.put("/:id", middleware.checkCampgroundOwner, function(req, res){
     var lat = data.results[0].geometry.location.lat;
     var lng = data.results[0].geometry.location.lng;
     var location = data.results[0].formatted_address;
-    var newData = {name: req.body.name, image: req.body.image, description: req.body.description, price: req.body.price, location: location, lat: lat, lng: lng};
+    var newData = {name: req.body.name, image: req.body.image, description: req.body.description, cost: req.body.cost, location: location, lat: lat, lng: lng};
     Campground.findByIdAndUpdate(req.params.id, {$set: newData}, function(err, campground){
         if(err){
             req.flash("error", err.message);
